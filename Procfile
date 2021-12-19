@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPS -jar target/cursospring-0.0.1-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPS -jar target/todolistapi-0.0.1-SNAPSHOT.jar
