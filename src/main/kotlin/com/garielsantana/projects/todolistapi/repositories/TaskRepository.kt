@@ -6,12 +6,10 @@ import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import java.time.LocalDateTime
-import java.util.*
 
 interface TaskRepository: JpaRepository<Task, Long> {
 
-
-    fun findTasksByUser(id: Long, pageable: Pageable): Page<Task>
+    fun findTasksByUserId(id: Long, pageable: Pageable): Page<Task>
 
     @Query("SELECT task FROM Task task WHERE task.dueTime BETWEEN :startDate AND :endDate")
     fun findTasksBetweenDates(startDate: LocalDateTime, endDate: LocalDateTime): List<Task>

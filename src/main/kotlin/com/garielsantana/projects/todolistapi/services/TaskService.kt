@@ -6,16 +6,11 @@ import com.garielsantana.projects.todolistapi.models.Task
 import com.garielsantana.projects.todolistapi.models.TasksOverview
 import com.garielsantana.projects.todolistapi.models.dto.NewTaskDTO
 import com.garielsantana.projects.todolistapi.repositories.TaskRepository
-import com.garielsantana.projects.todolistapi.utils.toLocalDate
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
-import java.time.ZoneOffset
-import java.time.temporal.ChronoUnit
-import java.util.*
-import java.util.concurrent.TimeUnit
 import javax.transaction.Transactional
 
 @Service
@@ -35,7 +30,7 @@ class TaskService(
         direction: String
     ): Page<Task> {
         val pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.fromString(direction), orderBy)
-        return taskRepository.findTasksByUser(userService.getCurrentUser().id, pageRequest)
+        return taskRepository.findTasksByUserId(userService.getCurrentUser().id, pageRequest)
     }
 
     fun getTasksOverview(): TasksOverview {
