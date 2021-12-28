@@ -60,7 +60,7 @@ class MainControllerAdvice {
     ): ResponseEntity<StandardError> {
         val standardError = StandardError(
             status = HttpStatus.INTERNAL_SERVER_ERROR.value(),
-            error = exception.message!!,
+            error = exception.message ?: "Internal error",
             path = request.requestURI
         )
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(standardError)

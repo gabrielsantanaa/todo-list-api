@@ -5,6 +5,7 @@ import com.garielsantana.projects.todolistapi.security.ProfileAuthorities
 import javax.persistence.*
 
 @Entity
+@Table(name = "users")
 data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +18,11 @@ data class User(
 
     @OneToMany(mappedBy = "user")
     @get:JsonIgnore
-    val todos: List<Todo> = arrayListOf()
+    val tasks: List<Task> = arrayListOf()
+
+    @OneToMany(mappedBy = "user")
+    @get:JsonIgnore
+    val taskCategories: List<TaskCategory> = arrayListOf()
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "profiles")

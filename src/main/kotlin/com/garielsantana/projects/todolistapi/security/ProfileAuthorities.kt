@@ -2,7 +2,8 @@ package com.garielsantana.projects.todolistapi.security
 
 enum class ProfileAuthorities(val code: Int, val description: String) {
 
-    ADMIN(1, "ROLE_ADMIN"), CLIENT(2, "ROLE_CLIENT");
+    ADMIN(1, "ROLE_ADMIN"),
+    CLIENT(2, "ROLE_CLIENT");
 
     companion object {
         fun fromCode(code: Int): ProfileAuthorities {
