@@ -16,7 +16,8 @@ import javax.transaction.Transactional
 @Service
 class TaskService(
     private val taskRepository: TaskRepository,
-    private val userService: UserService
+    private val userService: UserService,
+    private val taskCategoryService: TaskCategoryService
 ) {
 
     fun getTaskById(id: Long): Task = taskRepository
@@ -65,7 +66,7 @@ class TaskService(
             title = task.title,
             description = task.description,
             user = userService.getCurrentUser(),
-            taskCategory = task.taskCategory,
+            taskCategory = taskCategoryService.getTaskCategoryById(task.taskCategoryId),
             dueTime = task.dueTime
         )
         return taskRepository.save(newTask)

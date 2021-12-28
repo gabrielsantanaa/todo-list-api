@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 interface TaskCategoryRepository: JpaRepository<TaskCategory, Long> {
 
     fun findAllByUserId(userId: Long): List<TaskCategory>
+    fun findTaskCategoryByIdAndUserId(id: Long, id1: Long): TaskCategory?
 }

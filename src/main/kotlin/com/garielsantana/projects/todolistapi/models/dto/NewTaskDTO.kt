@@ -7,6 +7,6 @@ import java.time.LocalDateTime
 data class NewTaskDTO(
     val title: String,
     val description: String,
-    val taskCategory: TaskCategory,
+    val taskCategoryId: Long,
     val dueTime: LocalDateTime
 ): Serializable
